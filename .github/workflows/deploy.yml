@@ -50,7 +50,7 @@ jobs:
         uses: actions/configure-pages@v3
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
-        # run: mkdir tmp-dir && mv dist tmp-dir/ && mv tmp-dir dist
+        run: mkdir tmp-dir && mv dist tmp-dir/ && mv tmp-dir dist
         with:
           # Upload dist repository
           path: './dist'
