@@ -14,7 +14,6 @@ jobs:
     defaults:
       run:
         working-directory: VueApp
-        lock-file: VueApp/package-lock.json
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
