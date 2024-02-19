@@ -32,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: VueApp
+        working-directory: ./VueApp
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
@@ -48,10 +48,9 @@ jobs:
         run: npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v3
-      - name: Manipulate with folders
-      - run: mkdir tmp-dir && mv dist tmp-dir/ && mv tmp-dir dist
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
+        # run: mkdir tmp-dir && mv dist tmp-dir/ && mv tmp-dir dist
         with:
           # Upload dist repository
           path: './dist'
