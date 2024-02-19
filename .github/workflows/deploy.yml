@@ -4,7 +4,9 @@ on:
   push:
     branches:
       - main
-
+defaults:
+  run:
+    working-directory: VueApp
 jobs:
   build:
     name: Build
