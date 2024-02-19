@@ -4,17 +4,19 @@ on:
   push:
     branches:
       - main
-
+    defaults:
+      run:
+        working-directory: ./VueApp
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: VueApp
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
+        with:
+          persist-credentials: false
 
       - name: Setup Node
         uses: actions/setup-node@v3
@@ -35,9 +37,6 @@ jobs:
     name: Deploy
     needs: build
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: VueApp
     if: github.ref == 'refs/heads/main'
 
     steps:
