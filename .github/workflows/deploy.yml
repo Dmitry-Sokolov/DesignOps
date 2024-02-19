@@ -7,7 +7,6 @@ on:
 defaults:
   run:
     working-directory: ./VueApp
-    lock-file: ./VueApp/package-lock.json
 jobs:
   build:
     name: Build
