@@ -60,20 +60,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v2
 
-      # Manual Checkout
-      - uses: actions/checkout@v3
-
-      # Set up Node
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      - name:👇 Add Storybook build and deploy to GitHub Pages as a step in the workflow
-        uses: bitovi/github-actions-storybook-to-github-pages@v1.0.1
-        with:
-          install_command: npm install # default: npm ci
-          build_command: npm run build-storybook # default: npm run build-storybook
-          path: ./VueApp/storybook-static # default: dist/storybook
-          checkout: false # default: true
-
 # token: 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
