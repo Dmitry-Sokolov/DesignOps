@@ -2,7 +2,7 @@ name: Deploy
 
 defaults:
   run:
-    working-directory: VueApp
+    working-directory: ./VueApp
 
 on:
   # Runs on pushes targeting the default branch
@@ -40,6 +40,9 @@ jobs:
           persist-credentials: false
       - name: Setup Node
         uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm install
@@ -48,13 +51,12 @@ jobs:
         run: npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v3
-      - name: Prepare folders
-        run: mkdir tmp-dir && mv dist tmp-dir/ && mv tmp-dir dist
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
           # Upload dist repository
-          path: './dist'
+          path: './VueApp/dist'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
