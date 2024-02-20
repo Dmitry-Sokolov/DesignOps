@@ -42,7 +42,7 @@ jobs:
       - id: build-publish
         uses: bitovi/github-actions-storybook-to-github-pages@v1.0.2
         with:
-          path: './VueApp/dist/' # change to your build folder
+          path: './VueApp/dist' # change to your build folder
           install_command: npm install
           build_command: npm run build-storybook
           checkout: false # default: true
