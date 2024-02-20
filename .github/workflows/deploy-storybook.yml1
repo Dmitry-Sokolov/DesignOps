@@ -25,8 +25,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      # url: ${{ steps.build-publish.outputs.page_url }}
-      url: ${{ steps.change-page-url.outputs.new_page_url }}
+      url: ${{ steps.build-publish.outputs.page_url }}
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -56,10 +55,6 @@ jobs:
           # Upload dist repository
           path: './VueApp/storybook-static'
 
-      #- name: Deploy to GitHub Pages
-       # id: deployment
-        #uses: actions/deploy-pages@v2
-
-      - name: Override page_url
-        id: change-page-url
-        run: echo "new_page_url=${{ steps.deployment.outputs.page_url }}storybook/" >> $GITHUB_OUTPUT
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
