@@ -3,6 +3,7 @@ import vue from '@vitejs/plugin-vue'
 
 
 export default defineConfig({
+  base: './',
   plugins: [
     vue({
       template: {
@@ -12,8 +13,7 @@ export default defineConfig({
           // server. Setting this to `null` allows the Laravel plugin
           // to instead re-write asset URLs to point to the Vite
           // server instead.
-          base: null,
-
+          base: './',
           // The Vue plugin will parse absolute URLs and treat them
           // as absolute paths to files on disk. Setting this to
           // `false` will leave absolute URLs un-touched so they can
