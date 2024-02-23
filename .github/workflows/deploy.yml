@@ -31,6 +31,10 @@ jobs:
     defaults:
       run:
         working-directory: ./VueApp
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the
+      # added or changed files to the repository.
+      contents: write
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
@@ -44,13 +48,20 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-
       - name: Build CSS variables from master JSON
         run: npm run build-variables
 
+      # Commit all changed files back to the repository
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Automated Updating CSS Variables
+          # Optional commit user and author settings
+          commit_user_name: Dmitry-Sokolov
+          commit_user_email: dmytro@neuronux.com
+          repository: https://github.com/Dmitry-Sokolov/DesignOps.git
+
       - name: Build project
         run: npm run build
-
 
       - name: Build Storybook
         run: npm run build-storybook -- -o dist/storybook
