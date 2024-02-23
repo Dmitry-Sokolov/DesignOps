@@ -28,6 +28,11 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # We generate static HTML, JS, CSS so we need write access to the repo
+      pull-requests: write
+      pages: write
+      id-token: write
     defaults:
       run:
         working-directory: ./VueApp
