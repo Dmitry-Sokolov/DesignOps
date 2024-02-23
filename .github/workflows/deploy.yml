@@ -49,11 +49,11 @@ jobs:
 
       - name: Commit CSS variables changes
         uses: EndBug/add-and-commit@v9
-          with:
-            author_name: Dmitry-Sokolov
-            author_email: dmytro@neuronux.com
-            message: 'Css variables added'
-            add: '*.css'
+        with:
+          author_name: Dmitry-Sokolov
+          author_email: dmytro@neuronux.com
+          message: 'Css variables added'
+          add: '*.css'
 
       - name: Build project
         run: npm run build
