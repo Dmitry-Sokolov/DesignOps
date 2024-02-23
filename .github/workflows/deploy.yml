@@ -31,10 +31,6 @@ jobs:
     defaults:
       run:
         working-directory: ./VueApp
-    permissions:
-      # Give the default GITHUB_TOKEN write permission to commit and push the
-      # added or changed files to the repository.
-      contents: write
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
@@ -58,7 +54,6 @@ jobs:
           # Optional commit user and author settings
           commit_user_name: Dmitry-Sokolov
           commit_user_email: dmytro@neuronux.com
-          repository: https://github.com/Dmitry-Sokolov/DesignOps.git
 
       - name: Build project
         run: npm run build
