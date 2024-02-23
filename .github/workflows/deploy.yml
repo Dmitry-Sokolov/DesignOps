@@ -47,13 +47,13 @@ jobs:
       - name: Build CSS variables from master JSON
         run: npm run build-variables
 
-      # Commit all changed files back to the repository
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Automated Updating CSS Variables
-          # Optional commit user and author settings
-          commit_user_name: Dmitry-Sokolov
-          commit_user_email: dmytro@neuronux.com
+      - name: Commit CSS variables changes
+        uses: EndBug/add-and-commit@v9
+          with:
+            author_name: Dmitry-Sokolov
+            author_email: dmytro@neuronux.com
+            message: 'Css variables added'
+            add: '*.css'
 
       - name: Build project
         run: npm run build
