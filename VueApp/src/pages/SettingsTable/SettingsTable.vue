@@ -1,12 +1,72 @@
+
+<script lang="ts">
+
+    import draggable from 'vuedraggable'
+
+    import TableHeader from  "./components/TableHeader.vue";
+
+    import "../../css-variables/base.css";
+
+
+
+    export default {
+        name: "two-lists",
+        display: "Two Lists",
+        order: 1,
+        components: {
+            draggable,//: VueDraggableNext
+            TableHeader
+        },
+        props: [
+            'headerBackgroundColor',
+            'headerBorderBottomColor',
+            'headerPadding',
+            'headerGap'
+
+        ],
+        data() {
+            return {
+                count: 8,
+                list1: [
+                    {name: "Dropdown Item", id: 1},
+                    {name: "Dropdown Item", id: 2},
+                    {name: "Dropdown Item", id: 3},
+                    {name: "Dropdown Item", id: 4}
+                ],
+                list2: [
+                    {name: "Dropdown Item", id: 5},
+                    {name: "Dropdown Item", id: 6},
+                    {name: "Dropdown Item", id: 7}
+                ]
+            };
+        },
+        methods: {
+            add: function () {
+                this.list1.push({name: "Juan", id: 8});
+            },
+            replace: function () {
+                this.list1 = [{name: "Edgard", id: 9}];
+            },
+
+            log: function (evt: any) {
+                window.console.log(evt);
+            },
+            removeAtList1(idx: number) {
+                this.list1.splice(idx, 1);
+            },
+        }
+    };
+
+
+</script>
 <template>
-    <header>
-        <h2>Table Settings</h2>
-        <div>
-            <p>Row Density</p>
-
-        </div>
-
-    </header>
+    <TableHeader
+        :headerBackgroundColor="headerBackgroundColor"
+        :headerBorderBottomColor="headerBorderBottomColor"
+        :headerPadding="headerPadding"
+        :headerGap="headerGap"
+    >
+    </TableHeader>
 
     <div class="row">
         <div class="col-3">
@@ -69,59 +129,11 @@
 
 </template>
 
-<script lang="ts">
 
-    // import { VueDraggableNext } from 'vue-draggable-next'
-    import draggable from 'vuedraggable'
-    import "../../css-variables/base.css";
-
-    export default {
-        name: "two-lists",
-        display: "Two Lists",
-        order: 1,
-        components: {
-            draggable//: VueDraggableNext
-        },
-        data() {
-            return {
-                count: 8,
-                list1: [
-                    {name: "Dropdown Item", id: 1},
-                    {name: "Dropdown Item", id: 2},
-                    {name: "Dropdown Item", id: 3},
-                    {name: "Dropdown Item", id: 4}
-                ],
-                list2: [
-                    {name: "Dropdown Item", id: 5},
-                    {name: "Dropdown Item", id: 6},
-                    {name: "Dropdown Item", id: 7}
-                ]
-            };
-        },
-        methods: {
-            add: function () {
-                this.list1.push({name: "Juan", id: 8});
-            },
-            replace: function () {
-                this.list1 = [{name: "Edgard", id: 9}];
-            },
-
-            log: function (evt: any) {
-                window.console.log(evt);
-            },
-            removeAtList1(idx: number) {
-                this.list1.splice(idx, 1);
-            },
-        }
-    };
-</script>
 
 <style scoped>
-    .read-the-docs {
-        color: #888;
-    }
     .list-group-item {
-        background-color: var(--color-light-brand-purple);
+        background-color: var(--color-light-neutral-1);
     }
     .close {
         background: red;
