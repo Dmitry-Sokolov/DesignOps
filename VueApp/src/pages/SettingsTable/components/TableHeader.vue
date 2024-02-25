@@ -17,11 +17,11 @@
     };
 
     const StyledHeader = styled('header', headerProps)`
-      background-color: var(${props => props.headerBackgroundColor });
-      border-bottom: 1px solid var(${props => props.headerBorderBottomColor });
-      padding: var(${props => props.headerPadding });
-      gap: var(${props => props.headerGap });
-      border-radius: var(${props => props.headerBorderRadius });
+      background-color: var(${props => props.headerBackgroundColor || "" });
+      border-bottom: 1px solid var(${props => props.headerBorderBottomColor || "" });
+      padding: var(${props => props.headerPadding || "" });
+      gap: var(${props => props.headerGap || "" });
+      border-radius: var(${props => props.headerBorderRadius || "" });
     `;
 
     const StyledHeaderTitle = styled('h2', headerTitleProps)`
