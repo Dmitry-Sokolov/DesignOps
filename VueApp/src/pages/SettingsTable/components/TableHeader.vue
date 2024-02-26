@@ -1,5 +1,6 @@
 <script lang="ts">
     import styled from "vue3-styled-components";
+    import ButtonGroupCompact from "./ButtonGroupCompact.vue";
 
     const headerProps = {
         headerBackgroundColor: String,
@@ -34,7 +35,7 @@
 
     export default {
         name: "TableHeader",
-        components: { StyledHeader, StyledHeaderTitle},
+        components: { StyledHeader, StyledHeaderTitle, ButtonGroupCompact},
         props: [
             // header
             'headerBackgroundColor',
@@ -79,7 +80,7 @@
         </StyledHeaderTitle>
         <div>
             <p>Row Density</p>
-
+            <ButtonGroupCompact></ButtonGroupCompact>
         </div>
     </StyledHeader>
 </template>
