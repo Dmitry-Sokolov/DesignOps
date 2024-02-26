@@ -11,7 +11,6 @@
     };
 
     const styledLabelProps = {
-        active: Boolean,
         groupCompactBackgroundColor: String,
         groupCompactActiveBackgroundColor: String,
         groupCompactItemBorderColor: String,
@@ -30,11 +29,11 @@
 
 
     const StyledName = styled('button', styledLabelProps)`
-      background-color: var(${props => props.groupCompactBackgroundColor});
+      background-color: var(${props => props.groupCompactBackgroundColor || ""});
 
       border: 1px solid var(${props => props.groupCompactItemBorderColor || "" });
       &.active{
-        background-color: var(${props => props.groupCompactActiveBackgroundColor};
+        background-color: var(${props => props.groupCompactActiveBackgroundColor || ""};
       }
     `;
 
