@@ -50,10 +50,6 @@
         ],
         data() {
             return {
-                headerBackgroundColor: "--color-light-neutral-1",
-                headerBorderBottomColor: "--color-light-neutral-6",
-                headerPadding: "--size-3",
-                headerGap: "--size-4",
                 headerBorderRadius: "--radius-sm",
                 headerTitleColor: "--color-light-neutral-9",
                 headerTitleFontSize: "--size-4",

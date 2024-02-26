@@ -13,7 +13,12 @@
     const styledLabelProps = {
         active: Boolean,
         groupCompactBackgroundColor: String,
+        groupCompactActiveBackgroundColor: String,
+        groupCompactItemBorderColor: String,
     };
+
+    const selected = ref();
+
 
     const StyledButtonGroup = styled('div', buttonGroupProps)`
       background-color: var(${props => props.headerBackgroundColor || "" });
@@ -24,30 +29,24 @@
     `;
 
 
-    const StyledLabel = styled('label', styledLabelProps)`
-      background-color: var(${props => props.active ? props.groupCompactBackgroundColor : "" });
+    const StyledName = styled('button', styledLabelProps)`
+      background-color: var(${props => props.groupCompactBackgroundColor});
 
-      border-bottom: 1px solid var(${props => props.headerBorderBottomColor || "" });
-      padding: var(${props => props.headerPadding || "" });
-      gap: var(${props => props.headerGap || "" });
-      border-radius: var(${props => props.headerBorderRadius || "" });
+      border: 1px solid var(${props => props.groupCompactItemBorderColor || "" });
+      &.active{
+        background-color: var(${props => props.groupCompactActiveBackgroundColor};
+      }
     `;
 
 
-    // const choice = defineModel("choice")
-    const selected = ref();
-    // function update(event) {
-    //     choise = event.target.dataset.value;
-    // }
 
-    const handleClick = (event) => {
-        debugger
-        selected.value = event.target.dataset.value;
+    const handleClick = (event: MouseEvent) => {
+        selected.value = (event.target as HTMLButtonElement).dataset.value;
     }
 
     export default {
         name: "ButtonGroupCompact",
-        components: { StyledButtonGroup, StyledLabel },
+        components: { StyledButtonGroup, StyledName },
 
         props: [
             // header
@@ -62,12 +61,12 @@
             'headerTitleLineHeight',
 
             "groupCompactBackgroundColor",
+            "groupCompactActiveBackgroundColor",
+            "groupCompactItemBorderColor",
             'choice',
             'selected'
         ],
-        data() {
 
-        },
         setup() {
             return {
                 selected,
@@ -84,6 +83,7 @@
                 ],
                 choice: "default",
                 groupCompactBackgroundColor: "--color-light-purple-1",
+                groupCompactActiveBackgroundColor: "--color-light-purple-6",
 
                 headerBackgroundColor: "--color-light-neutral-1",
                 headerBorderBottomColor: "--color-light-neutral-6",
@@ -109,9 +109,10 @@
 
         <div v-for="(option, index) in options" :key="index">
             <StyledName
-                :active="selected?.value == option.value"
+                :class="selected?.value === option.value ? 'active': ''"
                 :data-value="option.value"
                 :groupCompactBackgroundColor="groupCompactBackgroundColor"
+                :groupCompactItemBorderColor="groupCompactItemBorderColor"
                 @click="handleClick"
             >
                 {{ option.name }}
