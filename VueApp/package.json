@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "build-variables": "node ./src/utils/tokenToCss.js"
+    "build-variables": "node ./src/utils/tokenToCss.js",
+    "build-figma": "node ./src/utils/tokenToFigma.js"
   },
   "dependencies": {
     "@types/styled-components": "^5.1.34",
